@@ -1,0 +1,32 @@
+    body {
+			background-color: #000;
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #000;
+		}
+		
+		.banner-images {
+			width: 100%;
+		}
+
+		#wrapper{ 
+			margin: 0 auto; 
+			width: 960px; 
+			padding: 10px; 
+			background-color: #fff; 
+		}
+
+		#about-you{ 
+			float: left; 
+			width: 20px auto;
+			margin: 0;
+			padding: 0 10px 20px 0;
+			border: 10px solid white;
+
+		}
+
+		#profile-pic{
+			width: 200px;
+			float: left;
+			margin: 0 20px 40px 0;
+
+		}
