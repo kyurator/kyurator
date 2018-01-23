@@ -13,20 +13,6 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                                                                                   
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-  <script type='text/javascript'>    
-  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/10yoc-VUUL50KmM7iq7VJNgbOYFnJXpgVddbpgsYflq0/edit?usp=sharing';
-
-  function init() {
-    Tabletop.init( { key: publicSpreadsheetUrl,
-                     callback: showInfo,
-                     simpleSheet: true } )}
-  function showInfo(data, tabletop) {
-    alert('Successfully processed!')
-    console.log(data);}
-  window.addEventListener('DOMContentLoaded', init)
-  </script>
   
 <style>
   body {font: 400 15px/1.8 Lato, sans-serif; color: #777;}
@@ -103,7 +89,20 @@
 <div id="band" class="container text-center">
   <h3>kyurator</h3>
   <br>
-</div>
+</div>                                           
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+  <script type='text/javascript'>    
+  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/10yoc-VUUL50KmM7iq7VJNgbOYFnJXpgVddbpgsYflq0/';
+
+  function init() {
+    Tabletop.init( { key: publicSpreadsheetUrl,
+                     callback: showInfo,
+                     simpleSheet: true } )}
+  function showInfo(data, tabletop) {
+    alert('Successfully processed!')
+    console.log(data);}
+  window.addEventListener('DOMContentLoaded', init)
+  </script>
                                                 
 </body>
 </html>
