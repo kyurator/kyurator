@@ -1,6 +1,7 @@
+
 <!DOCTYPE html>
 <html>
-<title>kyurator | dashboard</title>
+<title>kyurator</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -11,50 +12,73 @@
 
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-/* Standard sidebar and nav styling from your index template */
 .sidenav { height: 100%; width: 200px; position: fixed; z-index: 1; top: 0; left: 0; background-color: #111; overflow-x: hidden; padding-top: 20px;}
-.sidenav a, .dropdown-btn {padding: 6px 8px 6px 16px; text-decoration: none; font-size: 20px; color: #818181; display: block; border: none; background: none; width:100%; text-align: left; cursor: pointer; outline: none;}
-.sidenav a:hover, .dropdown-btn:hover {color: #f1f1f1;}
-.active {background-color: white; color: grey;}
-.dropdown-container {display: none; background-color: #ffffff; padding-left: 8px;}
 
-/* Full-height container for the Looker Studio iframe */
-.dashboard-wrapper {
-    width: 100%;
-    height: 80vh; /* Responsive height: 80% of viewport */
-    border: none;
-    background: #fff;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
-}
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {padding: 6px 8px 6px 16px; text-decoration: none; font-size: 20px; color: #818181; display: block; border: none; background: none; width:100%; text-align: left; cursor: pointer; outline: none;}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {color: #f1f1f1;}
+
+/* Main content */
+.main {margin-left: 200px; /* Same as the width of the sidenav */font-size: 20px; /* Increased text to enable scrolling */padding: 0px 10px;}
+
+/* Add an active class to the active dropdown button */
+.active {background-color: white; color: grey;}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {display: none; background-color: #ffffff; padding-left: 8px;}
+/* Optional: Style the caret down icon */
+.fa-caret-down {float: right; padding-right: 8px;}
 </style>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
-
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:225px;" id="mySidebar"><br>
-  <div class="w3-container">
-    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-padding w3-hover-grey" title="close menu">
-      <i class="fa fa-remove"></i>
-    </a>
-    <img src="images/JChen_pic2.png" 
-         class="w3-circle w3-image" 
-         style="width:150px; height:150px; object-fit:cover; display:block; margin:left;">
-    <br>
-    <p class="w3-text-grey">Jon Chen</p>
+<div class="w3-bar w3-border w3-light-grey">
   </div>
   
-  <a href="kyurator_index_v2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Portfolio</a>
-
-  <button class="dropdown-btn w3-button w3-padding">
-    <i class="fa fa-link w3-margin-right"></i>
-  </button>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:225px;" id="mySidebar"><br>
+  <div class="w3-container">
+  <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-padding w3-hover-grey" title="close menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <img src="images/JChen_pic2.png" 
+       class="w3-circle w3-image" 
+       style="width:150px; height:150px; object-fit:cover; display:block; margin:left;">
+  <br>
+  
+  <h4><b></b></h4>
+  <p class="w3-text-grey">Jon Chen</p>
+</div>
+  
+<button class="dropdown-btn w3-button w3-padding">
+  <i class="fa fa-link w3-margin-right"></i>
+</button>
   <div class="dropdown-container">
-    <a href="/about.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>About Me</a> 
-    <a href="https://linkedin.com/in/jonschen" target="_blank" class="w3-bar-item w3-button w3-padding"><i class="fa fa-linkedin fa-fw w3-margin-right"></i>LinkedIn</a>
-  </div>  
+    <a href="/about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>About Me</a> 
+    <a href="https://linkedin.com/in/jonschen" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-linkedin fa-fw w3-margin-right"></i>LinkedIn</a>
+    <a href="https://www.instagram.com/_kyurator/" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-instagram fa-fw w3-margin-right"></i>Instagram</a>
+</div>  
 </nav>
 
+<!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:275px">
+
+  <!-- Header -->
+  <header id="Portfolio">
+    <span class="w3-button w3-hide-large w3-large w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+    <h1><b></b></h1>
+      <p class="w3-text-grey">Portfolio</p>
+    </div>
+  </header>
+  
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding">
+    
 <div class="w3-main" style="margin-left:275px">
 
   <header id="DashboardHeader">
@@ -73,27 +97,40 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </iframe>
   </div>
 
-  <footer class="w3-container w3-padding-32"></footer>
+  <hr>
+  
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-32">
+  </footer>
 
+<!-- End page content -->
 </div>
 
 <script>
-// Logic for sidebar and dropdowns from your original template
+// Script to open and close sidebar
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
+ 
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
-
+  
+//* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
 var dropdown = document.getElementsByClassName("dropdown-btn");
-for (var i = 0; i < dropdown.length; i++) {
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
   dropdown[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var dropdownContent = this.nextElementSibling;
-    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
   });
 }
 </script>
