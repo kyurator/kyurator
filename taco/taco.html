@@ -1,55 +1,102 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html>
+<title>kyurator | dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+/* Standard sidebar and nav styling from your index template */
+.sidenav { height: 100%; width: 200px; position: fixed; z-index: 1; top: 0; left: 0; background-color: #111; overflow-x: hidden; padding-top: 20px;}
+.sidenav a, .dropdown-btn {padding: 6px 8px 6px 16px; text-decoration: none; font-size: 20px; color: #818181; display: block; border: none; background: none; width:100%; text-align: left; cursor: pointer; outline: none;}
+.sidenav a:hover, .dropdown-btn:hover {color: #f1f1f1;}
+.active {background-color: white; color: grey;}
+.dropdown-container {display: none; background-color: #ffffff; padding-left: 8px;}
 
-.chart rect {
-  fill: steelblue;
+/* Full-height container for the Looker Studio iframe */
+.dashboard-wrapper {
+    width: 100%;
+    height: 80vh; /* Responsive height: 80% of viewport */
+    border: none;
+    background: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
 }
-
-.chart text {
-  fill: white;
-  font: 10px sans-serif;
-  text-anchor: end;
-}
-
 </style>
-<svg class="chart"></svg>
-<script src="//d3js.org/d3.v3.min.js"></script>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:225px;" id="mySidebar"><br>
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src="images/JChen_pic2.png" 
+         class="w3-circle w3-image" 
+         style="width:150px; height:150px; object-fit:cover; display:block; margin:left;">
+    <br>
+    <p class="w3-text-grey">Jon Chen</p>
+  </div>
+  
+  <a href="kyurator_index_v2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Portfolio</a>
+
+  <button class="dropdown-btn w3-button w3-padding">
+    <i class="fa fa-link w3-margin-right"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="/about.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>About Me</a> 
+    <a href="https://linkedin.com/in/jonschen" target="_blank" class="w3-bar-item w3-button w3-padding"><i class="fa fa-linkedin fa-fw w3-margin-right"></i>LinkedIn</a>
+  </div>  
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:275px">
+
+  <header id="DashboardHeader">
+    <span class="w3-button w3-hide-large w3-large w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+      <h1><b>Data Dashboard</b></h1>
+      <p class="w3-text-grey">Looker Studio Visualization</p>
+    </div>
+  </header>
+  
+  <div class="w3-container">
+    <iframe class="dashboard-wrapper" 
+            src="https://lookerstudio.google.com/embed/reporting/3985a6b5-7452-4dcb-97d1-a2e43021bcc4/page/page_12345" 
+            allowfullscreen 
+            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+    </iframe>
+  </div>
+
+  <footer class="w3-container w3-padding-32"></footer>
+
+</div>
+
 <script>
-
-var width = 420,
-    barHeight = 20;
-
-var x = d3.scale.linear()
-    .range([0, width]);
-
-var chart = d3.select(".chart")
-    .attr("width", width);
-
-d3.tsv("data.tsv", type, function(error, data) {
-  x.domain([0, d3.max(data, function(d) { return d.value; })]);
-
-  chart.attr("height", barHeight * data.length);
-
-  var bar = chart.selectAll("g")
-      .data(data)
-    .enter().append("g")
-      .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
-
-  bar.append("rect")
-      .attr("width", function(d) { return x(d.value); })
-      .attr("height", barHeight - 1);
-
-  bar.append("text")
-      .attr("x", function(d) { return x(d.value) - 3; })
-      .attr("y", barHeight / 2)
-      .attr("dy", ".35em")
-      .text(function(d) { return d.value; });
-});
-
-function type(d) {
-  d.value = +d.value; // coerce to number
-  return d;
+// Logic for sidebar and dropdowns from your original template
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
 }
 
+var dropdown = document.getElementsByClassName("dropdown-btn");
+for (var i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+  });
+}
 </script>
+
+</body>
+</html>
